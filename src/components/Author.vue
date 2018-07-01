@@ -1,5 +1,5 @@
 <template>
-  <div class="author">
+  <div class="author" :style="{ backgroundColor: 'light'+noteColor, borderColor: noteColor}">
     A note by {{authorName}}
   </div>
 </template>
@@ -24,5 +24,6 @@ export default {
     padding: 6px;
     padding-right: 20px;
     word-wrap: break-all;
+    border: 2px solid;
 }
 </style>
