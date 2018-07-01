@@ -1,11 +1,13 @@
 <template>
-  <div id="app" class="root">
-    <NoteliteHeader class="header" :headerTitle="headerTitle" :noteCreator="noteCreator" :color="color">
+  <div id="app" class="root" :style="{borderColor: noteColor}">
+    <NoteliteHeader class="header" :headerTitle="headerTitle" :noteCreator="noteCreator" :noteColor="noteColor">
     </NoteliteHeader>
-    <NoteTitle :title="noteTitle" :color="color">
+    <NoteTitle :noteTitle="noteTitle" :noteColor="noteColor">
     </NoteTitle>
-    <NoteText :noteText="noteText" :noteCreator="noteCreator" :color="color">
+    <NoteText :noteText="noteText" :noteCreator="noteCreator" :noteColor="noteColor">
     </NoteText>
+    <Author :authorName="authorName" :noteColor="noteColor">
+    </Author>
   </div>
 </template>
 
@@ -13,7 +15,7 @@
 import NoteliteHeader from './components/NoteliteHeader.vue'
 import NoteText from './components/NoteText.vue'
 import NoteTitle from './components/NoteTitle.vue'
-
+import Author from './components/Author.vue'
 export default {
   name: 'App',
 
@@ -21,16 +23,19 @@ export default {
     NoteliteHeader,
     NoteText,
     NoteTitle,
+    Author,
   },
 
   data () {
     return {
       id:'ididid',
       noteCreator: true,
+      authorName:'Amin',
       headerTitle:'notelite',
       noteText:'texttexttext',
       noteTitle:'titletitletitle',
-      noteColor: 'red',
+      noteColor: 'green',
+      //yellow-green-blue-black-(gray or grey both are the same)-seagreen-cyan
     }
   },
 }
@@ -41,11 +46,12 @@ export default {
   width: 350px;
   height: 100%;
   box-sizing: border-box;
-  border: 1px black solid;
+  border: 1px solid;
   position: relative;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
+  color:
 }
 </style>

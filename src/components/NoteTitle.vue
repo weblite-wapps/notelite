@@ -1,6 +1,6 @@
 <template>
-  <div class="title">
-    {{title}}
+  <div class="title" :style="{ backgroundColor: 'light'+noteColor, borderColor: noteColor}">
+    {{noteTitle}}
   </div>
 </template>
 
@@ -8,8 +8,8 @@
 export default {
   name: 'NoteTitle',
   props:{
-      title: String,
-      color: String,
+      noteTitle: String,
+      noteColor: String,
   },
   data () {
     return {

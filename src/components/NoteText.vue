@@ -1,13 +1,12 @@
 <template>
-
   <textarea autofocus
       :readonly="!noteCreator"
       class="textarea"
       :value="noteText"
       placeholder="What's on your mind?"
+      :style="{backgroundColor: 'light'+noteColor, borderColor: noteColor}"
       >
   </textarea>
-
 </template>
 
 <script>
@@ -17,7 +16,7 @@ export default {
   props:{
       noteText: String,
       noteCreator: Boolean,
-      color: String,
+      noteColor: String,
   },
 
   data () {
@@ -30,7 +29,7 @@ export default {
 
 <style scoped>
 .text{
-  border: 2px black solid;
+  border: 2px solid;
   box-sizing: border-box;
   height: 100%;
 }
@@ -39,9 +38,8 @@ export default {
   height: 90%;
   box-sizing: border-box;
   width: 100%;
-  border: 2px black solid;
+  border: 2px solid;
   font-size: 20px;
-  font-weight: lighter;
   padding: 20px;
   outline: none;
   resize: none;

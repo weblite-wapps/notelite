@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :style="{ backgroundColor: 'light'+noteColor, borderColor: noteColor}">
     <span class="header-title">
       {{headerTitle}}
     </span>
@@ -14,11 +14,10 @@ export default {
   props:{
     noteCreator: Boolean,
     headerTitle: String,
-    color: String,
+    noteColor: String,
   },
   data () {
     return{
-
     }
   },
 
@@ -36,14 +35,13 @@ export default {
 <style scoped>
 .header{
   height: 8%;
-  border: 2px black solid;
+  border: 2px solid;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-left: 10px;
   padding-right: 10px;
-
 }
 
 .header-title{
