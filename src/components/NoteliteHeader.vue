@@ -14,6 +14,7 @@ export default {
   props:{
     noteCreator: Boolean,
     headerTitle: String,
+    color: String,
   },
   data () {
     return{

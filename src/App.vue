@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="root">
-    <NoteliteHeader class="header" :headerTitle="headerTitle" :noteCreator="noteCreator">
+    <NoteliteHeader class="header" :headerTitle="headerTitle" :noteCreator="noteCreator" :color="color">
     </NoteliteHeader>
-    <NoteTitle :title="noteTitle">
+    <NoteTitle :title="noteTitle" :color="color">
     </NoteTitle>
-    <NoteText :noteText="noteText" :noteCreator="noteCreator">
+    <NoteText :noteText="noteText" :noteCreator="noteCreator" :color="color">
     </NoteText>
   </div>
 </template>

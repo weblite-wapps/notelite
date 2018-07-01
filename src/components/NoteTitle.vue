@@ -9,6 +9,7 @@ export default {
   name: 'NoteTitle',
   props:{
       title: String,
+      color: String,
   },
   data () {
     return {
@@ -22,7 +23,7 @@ export default {
 .title{
   padding: 5px;
   width: 100%;
-  border: 2px black solid;
+  border: 2px solid;
   box-sizing: border-box;
   font-size: 22px;
   display: flex;

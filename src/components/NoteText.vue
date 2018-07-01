@@ -17,6 +17,7 @@ export default {
   props:{
       noteText: String,
       noteCreator: Boolean,
+      color: String,
   },
 
   data () {
@@ -43,5 +44,7 @@ export default {
   font-weight: lighter;
   padding: 20px;
   outline: none;
+  resize: none;
+  overflow: auto;
 }
 </style>
