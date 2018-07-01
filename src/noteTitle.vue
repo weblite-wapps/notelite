@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <noteliteHeader>
-    </noteliteHeader>
-    <noteTitle>
-    </noteTitle>
-    <noteText>
-    </noteText>
+
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
+  name: 'noteTitle',
   data () {
 
   }
