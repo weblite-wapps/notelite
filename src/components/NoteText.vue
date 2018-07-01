@@ -1,13 +1,13 @@
 <template>
-  <div class="text">
 
-  <textarea :readonly="!noteCreator"
+  <textarea autofocus
+      :readonly="!noteCreator"
       class="textarea"
-      :value="text"
+      :value="noteText"
+      placeholder="What's on your mind?"
       >
   </textarea>
 
-  </div>
 </template>
 
 <script>
@@ -35,6 +35,13 @@ export default {
 }
 
 .textarea{
-
+  height: 90%;
+  box-sizing: border-box;
+  width: 100%;
+  border: 2px black solid;
+  font-size: 20px;
+  font-weight: lighter;
+  padding: 20px;
+  outline: none;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <span>
+    <span class="header-title">
       {{headerTitle}}
     </span>
     <i class="save-icon" v-if="noteCreator">launch</i>
@@ -37,6 +37,16 @@ export default {
   height: 8%;
   border: 2px black solid;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+
+.header-title{
+  font-size: 24px;
 }
 
 .refresh-icon{

@@ -20,9 +20,14 @@ export default {
 
 <style scoped>
 .title{
-  height: 8%;
+  padding: 5px;
+  width: 100%;
   border: 2px black solid;
   box-sizing: border-box;
-
+  font-size: 22px;
+  display: flex;
+  justify-content:space-around;
+  word-break: break-all;
+  font-weight: bold;
 }
 </style>
