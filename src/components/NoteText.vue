@@ -1,6 +1,12 @@
 <template>
   <div class="text">
-    {{text}}
+
+  <textarea :readonly="!noteCreator"
+      class="textarea"
+      :value="text"
+      >
+  </textarea>
+
   </div>
 </template>
 
@@ -9,7 +15,8 @@ export default {
   name: 'NoteText',
 
   props:{
-      text: String,
+      noteText: String,
+      noteCreator: Boolean,
   },
 
   data () {
@@ -22,7 +29,12 @@ export default {
 
 <style scoped>
 .text{
+  border: 2px black solid;
+  box-sizing: border-box;
+  height: 100%;
+}
 
+.textarea{
 
 }
 </style>

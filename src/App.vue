@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="root">
-    <NoteliteHeader class="header" >
+    <NoteliteHeader class="header" :headerTitle="headerTitle" :noteCreator="noteCreator">
     </NoteliteHeader>
-    <NoteTitle :title="title">
+    <NoteTitle :title="noteTitle">
     </NoteTitle>
-    <NoteText :text="text">
+    <NoteText :noteText="noteText" :noteCreator="noteCreator">
     </NoteText>
   </div>
 </template>
@@ -26,10 +26,11 @@ export default {
   data () {
     return {
       id:'ididid',
-      creator: true,
-      text:'texttexttext',
-      title:'titletitletitle',
-      color: 'red',
+      noteCreator: true,
+      headerTitle:'notelite',
+      noteText:'texttexttext',
+      noteTitle:'titletitletitle',
+      noteColor: 'red',
     }
   },
 }
@@ -44,7 +45,7 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
 }
 </style>

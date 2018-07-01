@@ -20,6 +20,9 @@ export default {
 
 <style scoped>
 .title{
+  height: 8%;
+  border: 2px black solid;
+  box-sizing: border-box;
 
 }
 </style>
