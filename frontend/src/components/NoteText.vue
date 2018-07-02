@@ -1,8 +1,9 @@
 <template>
   <textarea autofocus
       :readonly="!noteCreator"
+      @change="changed"
       class="textarea"
-      :value="noteText"
+      v-model:value="editableNoteText"
       placeholder="What's on your mind?"
       :style="{backgroundColor: 'light'+noteColor, borderColor: noteColor}"
       >
@@ -21,7 +22,13 @@ export default {
 
   data () {
     return{
+      editableNoteText:this.noteText
+    }
+  },
 
+  methods:{
+    changed:function(){
+      this.$emit('textChange', this.editableNoteText)
     }
   },
 }

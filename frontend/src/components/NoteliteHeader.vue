@@ -3,12 +3,15 @@
     <span class="header-title">
       {{headerTitle}}
     </span>
+    <span class="save-text" v-if="showSaved">Saved</span>
+    <span class="refresh-text" v-if="showRefreshed">Refreshed</span>
     <i class="save-icon" @click="save" v-if="noteCreator">launch</i>
     <i class="refresh-icon" @click="refresh" v-if="!noteCreator">input</i>
   </div>
 </template>
 
 <script>
+import request from 'superagent'
 export default {
   name: 'NoteliteHeader',
   props:{
@@ -20,6 +23,8 @@ export default {
   },
   data () {
     return{
+      showSaved:false,
+      showRefreshed:false,
     }
   },
 
@@ -30,6 +35,8 @@ export default {
       .end((err, res) => {
         // Calling the end function will send the request
       });
+      this.showRefreshed=true
+      setTimeout(()=>this.showRefreshed=false,2000)
     },
     save: function(){
       request
@@ -38,6 +45,8 @@ export default {
       .end((err, res) => {
         // Calling the end function will send the request
       });
+      this.showSaved=true
+      setTimeout(()=>this.showSaved=false,2000)
     },
   },
 }
@@ -67,4 +76,19 @@ export default {
 
 }
 
+.refresh-text{
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 2px;
+  padding-left: 110px;
+  color:green;
+}
+
+.save-text{
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 2px;
+  padding-left: 150px;
+  color: green;
+}
 </style>

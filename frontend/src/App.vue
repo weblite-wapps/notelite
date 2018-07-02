@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="root" :style="{borderColor: noteColor}">
-    <NoteliteHeader class="header" :id="id" :noteText="noteText" :headerTitle="headerTitle" :noteCreator="noteCreator" :noteColor="noteColor">
+    <NoteliteHeader class="header" :id="id" :noteText="editableNoteText" :headerTitle="headerTitle" :noteCreator="noteCreator" :noteColor="noteColor">
     </NoteliteHeader>
     <NoteTitle :noteTitle="noteTitle" :noteColor="noteColor">
     </NoteTitle>
-    <NoteText :noteText="noteText" :noteCreator="noteCreator" :noteColor="noteColor">
+    <NoteText @textChange="textChange" :noteText="editableNoteText" :noteCreator="noteCreator" :noteColor="noteColor">
     </NoteText>
     <Author :authorName="authorName" :noteColor="noteColor">
     </Author>
@@ -28,8 +28,8 @@ export default {
 
   data () {
     return {
-      id:'id',
-      noteCreator: true,
+      id:'newid',
+      noteCreator: false,
       authorName:'Amin',
       headerTitle:'notelite',
       noteText:'some initial text',
@@ -38,6 +38,18 @@ export default {
       //yellow-green-blue-black-(gray or grey both are the same)-seagreen-cyan
     }
   },
+
+  methods:{
+    textChange:function(newText){
+      this.noteText=newText
+    },
+  },
+
+  computed:{
+    editableNoteText:function(){
+      return this.noteText
+    }
+  }
 }
 </script>
 
