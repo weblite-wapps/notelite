@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./logic/db.js":
+/*!*********************!*\
+  !*** ./logic/db.js ***!
+  \*********************/
+/*! exports provided: getNote, saveNote */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getNote\", function() { return getNote; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"saveNote\", function() { return saveNote; });\n/* harmony import */ var _models_note__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/note */ \"./models/note.js\");\n// models\n\n\nconst getNote = async id => _models_note__WEBPACK_IMPORTED_MODULE_0__[\"default\"].findOne({ id }).exec();\n\nconst saveNote = async (id, text) => new _models_note__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({ id, text }).save();\n\n//# sourceURL=webpack:///./logic/db.js?");
+
+/***/ }),
+
 /***/ "./logic/route.js":
 /*!************************!*\
   !*** ./logic/route.js ***!
@@ -94,7 +106,19 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _setup_server__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../setup/server */ \"./setup/server.js\");\n// components\n\n// db helpers\n// import { fetchLogs, saveLog, deleteLog, saveTime } from './db'\n\n\n_setup_server__WEBPACK_IMPORTED_MODULE_0__[\"default\"].get('/note', (req, res) => res.send('salam'));\n\n//# sourceURL=webpack:///./logic/route.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _setup_server__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../setup/server */ \"./setup/server.js\");\n/* harmony import */ var _db__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./db */ \"./logic/db.js\");\n// components\n\n// db helpers\n\n\n_setup_server__WEBPACK_IMPORTED_MODULE_0__[\"default\"].post('/saveNote', (req, res) => {\n  Object(_db__WEBPACK_IMPORTED_MODULE_1__[\"saveNote\"])(req.body.id, req.body.text).then(() => res.end('ok')).catch(err => res.end('not ok'));\n});\n\n_setup_server__WEBPACK_IMPORTED_MODULE_0__[\"default\"].get('/getNote/:id', (req, res) => {\n  Object(_db__WEBPACK_IMPORTED_MODULE_1__[\"getNote\"])(req.params.id).then(note => res.json(note)).catch(err => res.end('not ok'));\n});\n\n//# sourceURL=webpack:///./logic/route.js?");
+
+/***/ }),
+
+/***/ "./models/note.js":
+/*!************************!*\
+  !*** ./models/note.js ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n// module\n\n\nconst { Schema } = mongoose__WEBPACK_IMPORTED_MODULE_0___default.a;\n\n// create a schema\nconst NoteSchema = new Schema({\n  id: String,\n  text: String\n});\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.model('Note', NoteSchema));\n\n//# sourceURL=webpack:///./models/note.js?");
 
 /***/ }),
 
@@ -106,7 +130,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _set
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! path */ \"path\");\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! https */ \"https\");\n/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(https__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! fs */ \"fs\");\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _server__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./server */ \"./setup/server.js\");\n/* harmony import */ var _mongodb__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mongodb */ \"./setup/mongodb.js\");\n/* harmony import */ var _logic_route__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../logic/route */ \"./logic/route.js\");\n// modules\n\n\n\n// components\n\n\n\n\nconst privateKey = fs__WEBPACK_IMPORTED_MODULE_2___default.a.readFileSync(path__WEBPACK_IMPORTED_MODULE_0___default.a.resolve('./src/certs/express.key'), 'utf8');\nconst certificate = fs__WEBPACK_IMPORTED_MODULE_2___default.a.readFileSync(path__WEBPACK_IMPORTED_MODULE_0___default.a.resolve('./src/certs/express.crt'), 'utf8');\n\nhttps__WEBPACK_IMPORTED_MODULE_1___default.a.createServer({ key: privateKey, cert: certificate }, _server__WEBPACK_IMPORTED_MODULE_3__[\"default\"]).listen(3080);\n\n//# sourceURL=webpack:///./setup/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! path */ \"path\");\n/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! https */ \"https\");\n/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(https__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! fs */ \"fs\");\n/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _server__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./server */ \"./setup/server.js\");\n/* harmony import */ var _mongodb__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mongodb */ \"./setup/mongodb.js\");\n/* harmony import */ var _logic_route__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../logic/route */ \"./logic/route.js\");\n// modules\n\n\n\n// components\n\n\n\n\nconst privateKey = fs__WEBPACK_IMPORTED_MODULE_2___default.a.readFileSync(path__WEBPACK_IMPORTED_MODULE_0___default.a.resolve('./src/certs/express.key'), 'utf8');\nconst certificate = fs__WEBPACK_IMPORTED_MODULE_2___default.a.readFileSync(path__WEBPACK_IMPORTED_MODULE_0___default.a.resolve('./src/certs/express.crt'), 'utf8');\n\nhttps__WEBPACK_IMPORTED_MODULE_1___default.a.createServer({ key: privateKey, cert: certificate }, _server__WEBPACK_IMPORTED_MODULE_3__[\"default\"]).listen(3090);\n\n//# sourceURL=webpack:///./setup/index.js?");
 
 /***/ }),
 

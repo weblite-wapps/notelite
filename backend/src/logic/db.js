@@ -1,8 +1,9 @@
 // models
 import Note from '../models/note'
 
+export const getNote = async id => Note
+  .findOne({ id })
+  .exec()
 
-// export const fetchLogs = async query => Log
-//   .find(query)
-//   .sort({ created_at: -1 })
-//   .exec()
+export const saveNote = async (id, text) => new Note({ id, text })
+  .save()
