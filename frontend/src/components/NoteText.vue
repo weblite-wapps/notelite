@@ -5,7 +5,7 @@
     @change="changed"
     class="textarea"
     v-model:value="editableNoteText"
-    placeholder="What's on your mind?"
+    :placeholder="placeHolder"
     :style="{ backgroundColor: 'light' + noteColor, borderColor: noteColor }"
   />
 </template>
@@ -29,8 +29,19 @@
     methods:{
       changed:function(){
         this.$emit('textChange', this.editableNoteText)
-      }
+      },
     },
+
+    computed:{
+      placeHolder:function(){
+        if(this.noteCreator)
+        {
+          return "What's on your mind?"
+        }else{
+          return "This note is empty."
+        }
+      },
+    }
   }
 </script>
 

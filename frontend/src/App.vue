@@ -44,7 +44,7 @@
         noteCreator: true,
         authorName:'Amin',
         headerTitle:'notelite',
-        noteText:'some initial text',
+        noteText:'',
         noteTitle:'title',
         noteColor: 'blue',
         //yellow-green-blue-black-(gray or grey both are the same)-seagreen-cyan
