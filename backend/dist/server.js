@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loadNote\", function() { return loadNote; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"saveNote\", function() { return saveNote; });\n/* harmony import */ var _models_note__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/note */ \"./models/note.js\");\n// models\n\n\nconst loadNote = async id => _models_note__WEBPACK_IMPORTED_MODULE_0__[\"default\"].findOne({ id }).exec();\n\nconst saveNote = async (id, text) => new _models_note__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({ id, text }).save();\n\n//# sourceURL=webpack:///./logic/db.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loadNote\", function() { return loadNote; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"saveNote\", function() { return saveNote; });\n/* harmony import */ var _models_note__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/note */ \"./models/note.js\");\n// models\n\n\nconst loadNote = async id => _models_note__WEBPACK_IMPORTED_MODULE_0__[\"default\"].findOne({ id }).exec();\n\nconst saveNote = async (id, text) => _models_note__WEBPACK_IMPORTED_MODULE_0__[\"default\"].findOneAndUpdate({ id }, { id, text }, { upsert: true }, function (err, doc) {\n  if (err) return res.send(500, { error: err });\n  return res.send(\"succesfully saved\");\n});\n\n//# sourceURL=webpack:///./logic/db.js?");
 
 /***/ }),
 

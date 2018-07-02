@@ -6,5 +6,8 @@ export const loadNote = async id => Note
   .findOne({ id })
   .exec()
 
-export const saveNote = async (id, text) => new Note({ id, text })
-  .save()
+export const saveNote = async (id, text) => Note
+  .findOneAndUpdate({ id }, { id, text }, { upsert: true }, function(err, doc){
+    if (err) return res.send(500, { error: err });
+    return res.send("succesfully saved");
+  });

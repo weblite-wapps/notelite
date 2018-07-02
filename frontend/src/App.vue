@@ -42,13 +42,13 @@
 
     data () {
       return {
-        id:'',
+        id:'1',
         noteCreator: true,
-        authorName:'',
+        authorName:'amin',
         headerTitle:'notelite',
         noteText:'',
-        noteTitle:'',
-        noteColor: '',
+        noteTitle:'mytitle',
+        noteColor: 'blue',
         //yellow-green-blue-black-(gray or grey both are the same)-seagreen-cyan
       }
     },
