@@ -28,13 +28,13 @@ export default {
 
   data () {
     return {
-      id:'ididid',
+      id:'id',
       noteCreator: true,
       authorName:'Amin',
       headerTitle:'notelite',
-      noteText:'texttexttext',
-      noteTitle:'titletitletitle',
-      noteColor: 'green',
+      noteText:'some initial text',
+      noteTitle:'title',
+      noteColor: 'blue',
       //yellow-green-blue-black-(gray or grey both are the same)-seagreen-cyan
     }
   },
