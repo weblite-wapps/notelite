@@ -1,16 +1,15 @@
 // components
 import app from '../setup/server'
 // db helpers
-import { saveNote, getNote } from './db'
+import { saveNote, loadNote } from './db'
 
-app.post('/saveNote', (req, res) => {
-  saveNote(req.body.id, req.body.text)
+
+app.post('/saveNote', ({ body: { id, text } }, res) =>
+  saveNote(id, text)
     .then(() => res.end('ok'))
-    .catch(err => res.end('not ok'))
-})
+    .catch(() => res.end('not ok')))
 
-app.get('/getNote/:id', (req, res) => {
-  getNote(req.params.id)
-    .then(note => res.json(note))
-    .catch(err => res.end('not ok'))
-})
+app.get('/loadNote/:id', ({ params: { id } }, res) =>
+  loadNote(id)
+    .then(res.json)
+    .catch(() => res.end('not ok')))

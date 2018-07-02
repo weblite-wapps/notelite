@@ -1,7 +1,8 @@
 // models
 import Note from '../models/note'
 
-export const getNote = async id => Note
+
+export const loadNote = async id => Note
   .findOne({ id })
   .exec()
 

@@ -90,11 +90,11 @@
 /*!*********************!*\
   !*** ./logic/db.js ***!
   \*********************/
-/*! exports provided: getNote, saveNote */
+/*! exports provided: loadNote, saveNote */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getNote\", function() { return getNote; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"saveNote\", function() { return saveNote; });\n/* harmony import */ var _models_note__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/note */ \"./models/note.js\");\n// models\n\n\nconst getNote = async id => _models_note__WEBPACK_IMPORTED_MODULE_0__[\"default\"].findOne({ id }).exec();\n\nconst saveNote = async (id, text) => new _models_note__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({ id, text }).save();\n\n//# sourceURL=webpack:///./logic/db.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loadNote\", function() { return loadNote; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"saveNote\", function() { return saveNote; });\n/* harmony import */ var _models_note__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/note */ \"./models/note.js\");\n// models\n\n\nconst loadNote = async id => _models_note__WEBPACK_IMPORTED_MODULE_0__[\"default\"].findOne({ id }).exec();\n\nconst saveNote = async (id, text) => new _models_note__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({ id, text }).save();\n\n//# sourceURL=webpack:///./logic/db.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _setup_server__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../setup/server */ \"./setup/server.js\");\n/* harmony import */ var _db__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./db */ \"./logic/db.js\");\n// components\n\n// db helpers\n\n\n_setup_server__WEBPACK_IMPORTED_MODULE_0__[\"default\"].post('/saveNote', (req, res) => {\n  Object(_db__WEBPACK_IMPORTED_MODULE_1__[\"saveNote\"])(req.body.id, req.body.text).then(() => res.end('ok')).catch(err => res.end('not ok'));\n});\n\n_setup_server__WEBPACK_IMPORTED_MODULE_0__[\"default\"].get('/getNote/:id', (req, res) => {\n  Object(_db__WEBPACK_IMPORTED_MODULE_1__[\"getNote\"])(req.params.id).then(note => res.json(note)).catch(err => res.end('not ok'));\n});\n\n//# sourceURL=webpack:///./logic/route.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _setup_server__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../setup/server */ \"./setup/server.js\");\n/* harmony import */ var _db__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./db */ \"./logic/db.js\");\n// components\n\n// db helpers\n\n\n_setup_server__WEBPACK_IMPORTED_MODULE_0__[\"default\"].post('/saveNote', ({ body: { id, text } }, res) => Object(_db__WEBPACK_IMPORTED_MODULE_1__[\"saveNote\"])(id, text).then(() => res.end('ok')).catch(() => res.end('not ok')));\n\n_setup_server__WEBPACK_IMPORTED_MODULE_0__[\"default\"].get('/loadNote/:id', ({ params: { id } }, res) => Object(_db__WEBPACK_IMPORTED_MODULE_1__[\"loadNote\"])(id).then(res.json).catch(() => res.end('not ok')));\n\n//# sourceURL=webpack:///./logic/route.js?");
 
 /***/ }),
 
