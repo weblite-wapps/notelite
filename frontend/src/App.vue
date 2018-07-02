@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="root" :style="{borderColor: noteColor}">
-    <NoteliteHeader class="header" :headerTitle="headerTitle" :noteCreator="noteCreator" :noteColor="noteColor">
+    <NoteliteHeader class="header" :id="id" :noteText="noteText" :headerTitle="headerTitle" :noteCreator="noteCreator" :noteColor="noteColor">
     </NoteliteHeader>
     <NoteTitle :noteTitle="noteTitle" :noteColor="noteColor">
     </NoteTitle>

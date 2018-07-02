@@ -3,8 +3,8 @@
     <span class="header-title">
       {{headerTitle}}
     </span>
-    <i class="save-icon" v-if="noteCreator">launch</i>
-    <i class="refresh-icon" v-if="!noteCreator">input</i>
+    <i class="save-icon" @click="save" v-if="noteCreator">launch</i>
+    <i class="refresh-icon" @click="refresh" v-if="!noteCreator">input</i>
   </div>
 </template>
 
@@ -15,6 +15,8 @@ export default {
     noteCreator: Boolean,
     headerTitle: String,
     noteColor: String,
+    noteText: String,
+    id:String,
   },
   data () {
     return{
@@ -23,10 +25,19 @@ export default {
 
   methods:{
     refresh: function(){
-
+      request
+      .get('https://localhost:3090/getNote/'+ this.id)
+      .end((err, res) => {
+        // Calling the end function will send the request
+      });
     },
     save: function(){
-
+      request
+      .post('https://localhost:3090/saveNote')
+      .send({ id: this.id , text: this.noteText }) // sends a JSON post body
+      .end((err, res) => {
+        // Calling the end function will send the request
+      });
     },
   },
 }
