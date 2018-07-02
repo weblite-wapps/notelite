@@ -24,6 +24,7 @@
 </template>
 
 <script>
+  import request from 'superagent'
   import NoteliteHeader from './components/NoteliteHeader.vue'
   import NoteText from './components/NoteText.vue'
   import NoteTitle from './components/NoteTitle.vue'
@@ -41,13 +42,13 @@
 
     data () {
       return {
-        id:'2',
-        noteCreator: false,
-        authorName:'Amin',
+        id:'',
+        noteCreator: true,
+        authorName:'',
         headerTitle:'notelite',
-        noteText:'default',
-        noteTitle:'title',
-        noteColor: 'blue',
+        noteText:'',
+        noteTitle:'',
+        noteColor: '',
         //yellow-green-blue-black-(gray or grey both are the same)-seagreen-cyan
       }
     },
@@ -58,6 +59,15 @@
         this.noteText = newText
         console.log(this.noteText)
       },
+    },
+    mounted: function() {
+      console.log('mounted')
+      request
+        .get('https://localhost:3090/loadNote/'+ this.id)
+        .end((err, res) => {
+          this.noteText = res.body.text
+          // Calling the end function will send the request
+        })
     },
   }
 </script>
