@@ -41,7 +41,12 @@
           return "This note is empty."
         }
       },
-    }
+    },
+    watch:{
+      noteText:function(){
+        this.editableNoteText=this.noteText
+      },
+    },
   }
 </script>
 

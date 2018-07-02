@@ -38,6 +38,8 @@
         request
           .get('https://localhost:3090/loadNote/'+ this.id)
           .end((err, res) => {
+            this.$emit('textChange', res.body.text)
+            console.log(res.body.text)
             // Calling the end function will send the request
           })
         this.showRefreshed = true

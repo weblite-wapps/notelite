@@ -3,7 +3,8 @@
     <NoteliteHeader
       class="header"
       :id="id"
-      :noteText="editableNoteText"
+      @textChange="textChange"
+      :noteText="noteText"
       :headerTitle="headerTitle"
       :noteCreator="noteCreator"
       :noteColor="noteColor"
@@ -13,7 +14,7 @@
 
     <NoteText
       @textChange="textChange"
-      :noteText="editableNoteText"
+      :noteText="noteText"
       :noteCreator="noteCreator"
       :noteColor="noteColor"
     />
@@ -40,28 +41,24 @@
 
     data () {
       return {
-        id:'id22',
-        noteCreator: true,
+        id:'2',
+        noteCreator: false,
         authorName:'Amin',
         headerTitle:'notelite',
-        noteText:'',
+        noteText:'default',
         noteTitle:'title',
         noteColor: 'blue',
         //yellow-green-blue-black-(gray or grey both are the same)-seagreen-cyan
       }
     },
 
-    methods:{
-      textChange:function(newText){
-        this.noteText=newText
+    methods: {
+      textChange: function(newText){
+        console.log('on text change')
+        this.noteText = newText
+        console.log(this.noteText)
       },
     },
-
-    computed:{
-      editableNoteText:function(){
-        return this.noteText
-      }
-    }
   }
 </script>
 

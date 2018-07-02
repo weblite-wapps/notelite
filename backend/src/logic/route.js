@@ -11,5 +11,5 @@ app.post('/saveNote', ({ body: { id, text } }, res) =>
 
 app.get('/loadNote/:id', ({ params: { id } }, res) =>
   loadNote(id)
-    .then(res.json)
+    .then(note => res.json(note))
     .catch(() => res.end('not ok')))
