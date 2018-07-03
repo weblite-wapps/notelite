@@ -7,6 +7,4 @@ export const loadNote = async id => Note
   .exec()
 
 export const saveNote = async (id, text) => Note
-  .findOneAndUpdate({ id }, { id, text }, { upsert: true }, function(err, doc){
-    if(err) throw err
-});
+  .findOneAndUpdate({ id }, { id, text }, { upsert: true });
