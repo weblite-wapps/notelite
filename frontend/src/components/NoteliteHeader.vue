@@ -22,24 +22,20 @@
   import request from 'superagent'
 
   export default {
-    name: 'NoteliteHeader',
+      name: 'NoteliteHeader',
 
-    props: {
-      noteCreator: Boolean,
-      headerTitle: String,
-      noteColor: String,
-      noteText: String,
-      id: String,
-      showError: Boolean,
-      showSaved: Boolean,
-      showRefreshed: Boolean,
+      props: {
+        noteCreator: Boolean,
+        headerTitle: String,
+        noteColor: String,
+        noteText: String,
+        id: String,
+        showError: Boolean,
+        showSaved: Boolean,
+        showRefreshed: Boolean,
+      },
     },
-
-    data() {
-      return {
-      }
-    },
-
+    
     methods: {
       refresh: function() {
         this.$emit('refresh')

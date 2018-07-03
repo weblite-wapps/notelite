@@ -9,17 +9,12 @@
 
 <script>
   export default {
-    name: 'Author',
+      name: 'Author',
 
-    props:{
-      authorName: String,
-      noteColor: String,
-    },
-
-    data() {
-      return {
-
-      }
+      props:{
+        authorName: String,
+        noteColor: String,
+      },
     },
   }
 </script>

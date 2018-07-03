@@ -15,12 +15,6 @@
       noteTitle: String,
       noteColor: String,
     },
-
-    data() {
-      return {
-
-      }
-    },
   }
 </script>
 
