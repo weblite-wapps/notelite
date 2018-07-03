@@ -1,10 +1,16 @@
 <template>
-  <div class="header" :style="{ backgroundColor: 'light'+noteColor, borderColor: noteColor}">
+  <div
+    class="header"
+    :style="{ backgroundColor: 'light'+noteColor, borderColor: noteColor}"
+  >
+
     <span class="header-title">{{ headerTitle }}</span>
 
     <span class="save-text" v-if="showSaved">Saved</span>
 
     <span class="refresh-text" v-if="showRefreshed">Refreshed</span>
+
+    <span class="error-text" v-if="showError">Error</span>
 
     <i class="save-icon" @click="save" v-if="noteCreator">launch</i>
 
@@ -18,31 +24,28 @@
   export default {
     name: 'NoteliteHeader',
 
-    props:{
+    props: {
       noteCreator: Boolean,
       headerTitle: String,
       noteColor: String,
       noteText: String,
-      id:String,
+      id: String,
+      showError: Boolean,
+      showSaved: Boolean,
+      showRefreshed: Boolean,
     },
 
-    data () {
+    data() {
       return {
-        showSaved:false,
-        showRefreshed:false,
       }
     },
 
     methods: {
       refresh: function() {
         this.$emit('refresh')
-        this.showRefreshed = true
-        setTimeout(() => this.showRefreshed = false, 2000)
       },
       save: function() {
         this.$emit('save')
-        this.showSaved = true
-        setTimeout(() => this.showSaved = false, 2000)
       },
     },
   }
@@ -64,14 +67,6 @@
     font-size: 24px;
   }
 
-  .refresh-icon{
-
-  }
-
-  .save-icon{
-
-  }
-
   .refresh-text{
     font-weight: bold;
     font-size: 20px;
@@ -86,5 +81,13 @@
     margin-top: 2px;
     padding-left: 150px;
     color: green;
+  }
+
+  .error-text{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 2px;
+    padding-left: 150px;
+    color: red;
   }
 </style>

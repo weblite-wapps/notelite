@@ -16,7 +16,7 @@
       noteColor: String,
     },
 
-    data () {
+    data() {
       return {
 
       }
@@ -26,10 +26,10 @@
 
 <style scoped>
   .author{
-      direction: rtl;
-      padding: 6px;
-      padding-right: 20px;
-      word-wrap: break-all;
-      border: 2px solid;
+    direction: rtl;
+    padding: 6px;
+    padding-right: 20px;
+    word-wrap: break-all;
+    border: 2px solid;
   }
 </style>

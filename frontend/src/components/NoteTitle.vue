@@ -1,5 +1,8 @@
 <template>
-  <div class="title" :style="{ backgroundColor: 'light' + noteColor, borderColor: noteColor }">
+  <div
+    class="title"
+    :style="{ backgroundColor: 'light' + noteColor, borderColor: noteColor }"
+  >
     {{ noteTitle }}
   </div>
 </template>
@@ -12,8 +15,8 @@
       noteTitle: String,
       noteColor: String,
     },
-    
-    data () {
+
+    data() {
       return {
 
       }

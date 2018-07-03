@@ -6,10 +6,9 @@ import { saveNote, loadNote } from './db'
 
 app.post('/saveNote', ({ body: { id, text } }, res) =>
   saveNote(id, text)
-    .then(() => res.end('ok'))
-    .catch(() => res.end('not ok')))
-
+    .then((note) => res.end())
+    .catch((err) => res.send(err)))
 app.get('/loadNote/:id', ({ params: { id } }, res) =>
   loadNote(id)
-    .then(note => res.json(note))
-    .catch((err) => res.end('not ok' + err)))
+    .then((note) => res.send(note))
+    .catch((err) => res.send(err)))

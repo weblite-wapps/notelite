@@ -16,24 +16,24 @@
   export default {
     name: 'NoteText',
 
-    props:{
+    props: {
         noteText: String,
         noteCreator: Boolean,
         noteColor: String,
     },
 
-    data () {
-      return{
-        editableNoteText:this.noteText
+    data() {
+      return {
+        editableNoteText: this.noteText
       }
     },
 
-    methods:{
-      changed:function(){
+    methods: {
+      changed: function() {
         this.$emit('textChange', this.editableNoteText)
       },
       refresh: function() {
-        if(!this.noteCreator){
+        if(!this.noteCreator) {
           this.$emit('refresh')
           this.showRefreshed = true
           setTimeout(() => this.showRefreshed = false, 2000)
@@ -49,19 +49,19 @@
       },
     },
 
-    computed:{
-      placeHolder:function(){
+    computed: {
+      placeHolder: function() {
         if(this.noteCreator)
         {
           return "What's on your mind?"
-        }else{
+        }else {
           return "This note is empty."
         }
       },
     },
-    watch:{
+    watch: {
       noteText:function(){
-        this.editableNoteText=this.noteText
+        this.editableNoteText = this.noteText
       },
     },
   }
