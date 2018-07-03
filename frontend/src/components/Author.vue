@@ -15,8 +15,7 @@
         authorName: String,
         noteColor: String,
       },
-    },
-  }
+    }
 </script>
 
 <style scoped>

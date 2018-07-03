@@ -34,8 +34,7 @@
         showSaved: Boolean,
         showRefreshed: Boolean,
       },
-    },
-    
+
     methods: {
       refresh: function() {
         this.$emit('refresh')
