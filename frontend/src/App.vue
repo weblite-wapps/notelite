@@ -4,6 +4,8 @@
       class="header"
       :id="id"
       @textChange="textChange"
+      @save="save"
+      @refresh="refresh"
       :noteText="noteText"
       :headerTitle="headerTitle"
       :noteCreator="noteCreator"
@@ -13,6 +15,8 @@
     <NoteTitle :noteTitle="noteTitle" :noteColor="noteColor" />
 
     <NoteText
+      @save=""
+      @refresh=""
       @textChange="textChange"
       :noteText="noteText"
       :noteCreator="noteCreator"
@@ -42,7 +46,7 @@
 
     data () {
       return {
-        id:'1',
+        id:'11',
         noteCreator: true,
         authorName:'amin',
         headerTitle:'notelite',
@@ -55,19 +59,34 @@
 
     methods: {
       textChange: function(newText){
-        console.log('on text change')
         this.noteText = newText
-        console.log(this.noteText)
+      },
+      refresh: function() {
+        request
+          .get('https://localhost:3090/loadNote/'+ this.id)
+          .end((err, res) => {
+            if(res){
+              this.textChange(res.body.text)
+            }
+            // Calling the end function will send the request
+          })
+      },
+      save: function() {
+        console.log('save method is called in App')
+        console.log('notetobesaved: '+ this.noteText + '   ' + this.id)
+        request
+          .post('https://localhost:3090/saveNote')
+          .send({ id: this.id , text: this.noteText }) // sends a JSON post body
+          .end((err, res) => {
+            // Calling the end function will send the request
+          })
+          console.log('save method is Done in App')
+
       },
     },
+    
     mounted: function() {
-      console.log('mounted')
-      request
-        .get('https://localhost:3090/loadNote/'+ this.id)
-        .end((err, res) => {
-          this.noteText = res.body.text
-          // Calling the end function will send the request
-        })
+      this.refresh()
     },
   }
 </script>

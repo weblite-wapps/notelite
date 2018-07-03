@@ -35,23 +35,12 @@
 
     methods: {
       refresh: function() {
-        request
-          .get('https://localhost:3090/loadNote/'+ this.id)
-          .end((err, res) => {
-            this.$emit('textChange', res.body.text)
-            console.log(res.body.text)
-            // Calling the end function will send the request
-          })
+        this.$emit('refresh')
         this.showRefreshed = true
         setTimeout(() => this.showRefreshed = false, 2000)
       },
       save: function() {
-        request
-          .post('https://localhost:3090/saveNote')
-          .send({ id: this.id , text: this.noteText }) // sends a JSON post body
-          .end((err, res) => {
-            // Calling the end function will send the request
-          })
+        this.$emit('save')
         this.showSaved = true
         setTimeout(() => this.showSaved = false, 2000)
       },

@@ -3,6 +3,8 @@
     autofocus
     :readonly="!noteCreator"
     @change="changed"
+    @keyup.ctrl.115.prevent="save"
+    @keyup.ctrl.114.prevent="refresh"
     class="textarea"
     v-model:value="editableNoteText"
     :placeholder="placeHolder"
@@ -29,6 +31,21 @@
     methods:{
       changed:function(){
         this.$emit('textChange', this.editableNoteText)
+      },
+      refresh: function() {
+        if(!this.noteCreator){
+          this.$emit('refresh')
+          this.showRefreshed = true
+          setTimeout(() => this.showRefreshed = false, 2000)
+        }
+      },
+      save: function() {
+        if(this.noteCreator)
+        {
+          this.$emit('save')
+          this.showSaved = true
+          setTimeout(() => this.showSaved = false, 2000)
+        }
       },
     },
 
