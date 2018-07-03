@@ -1,5 +1,12 @@
 <template>
-  <div id="app" class="root" :style="{borderColor: noteColor}">
+  <div
+    id="app"
+    class="root"
+    :style="{borderColor: noteColor}"
+    @keyup.ctrl.115.prevent="save"
+    @keyup.ctrl.114.prevent="refresh"
+  >
+
     <NoteliteHeader
       class="header"
       :id="id"
@@ -15,8 +22,8 @@
     <NoteTitle :noteTitle="noteTitle" :noteColor="noteColor" />
 
     <NoteText
-      @save=""
-      @refresh=""
+      @save="save"
+      @refresh="refresh"
       @textChange="textChange"
       :noteText="noteText"
       :noteCreator="noteCreator"
@@ -84,7 +91,7 @@
 
       },
     },
-    
+
     mounted: function() {
       this.refresh()
     },
