@@ -78,7 +78,7 @@
         request
           .get('https://localhost:3090/loadNote/' + this.id)
           .end((err, res) => {
-            if(err || res.body.text){
+            if(err || res.body.text == null){
               this.showRefreshed = false
               this.showError = true
               this.showSaved = false
