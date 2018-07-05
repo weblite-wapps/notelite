@@ -79,7 +79,7 @@
           .get('https://localhost:3090/loadNote/' + this.id)
           .set('Access-Control-Allow-Origin', '*')
           .end((err, res) => {
-            if(err || res.body.text == null){
+            if(err || res.body == null){
               this.showRefreshed = false
               this.showError = true
               this.showSaved = false
