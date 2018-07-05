@@ -77,6 +77,7 @@
       refresh: function() {
         request
           .get('https://localhost:3090/loadNote/' + this.id)
+          .set('Access-Control-Allow-Origin', '*')
           .end((err, res) => {
             if(err){
               this.showRefreshed = false
@@ -96,6 +97,7 @@
       save: function() {
         request
           .post('https://localhost:3090/saveNote')
+          .set('Access-Control-Allow-Origin', '*')
           .send({ id: this.id, text: this.noteText }) // sends a JSON post body
           .end((err, res) => {
             if(err) {
