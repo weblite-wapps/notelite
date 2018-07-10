@@ -75,6 +75,7 @@
 
   .textarea {
     height: 90%;
+    border: 0px;
     box-sizing: border-box;
     width: 100%;
     font-size: 20px;
