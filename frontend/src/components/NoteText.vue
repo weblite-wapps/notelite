@@ -8,7 +8,6 @@
     class="textarea"
     v-model:value="editableNoteText"
     :placeholder="placeHolder"
-    :style="{ backgroundColor: 'light' + noteColor }"
   />
 </template>
 
@@ -19,7 +18,7 @@
     props: {
         noteText: String,
         noteCreator: Boolean,
-        noteColor: String,
+        noteColorObj: Object,
     },
 
     data() {
@@ -68,11 +67,6 @@
 </script>
 
 <style scoped>
-  .text {
-    box-sizing: border-box;
-    height: 100%;
-  }
-
   .textarea {
     height: 90%;
     border: 0px;
@@ -83,5 +77,6 @@
     outline: none;
     resize: none;
     overflow: auto;
+    background-color: #eeeeee;
   }
 </style>

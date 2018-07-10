@@ -1,7 +1,7 @@
 <template>
   <div
     class="header"
-    :style="{ backgroundColor: 'light'+noteColor }"
+    :style="{ backgroundColor: noteColorObj.color }"
   >
 
     <span class="header-title">{{ headerTitle }}</span>
@@ -27,7 +27,7 @@
       props: {
         noteCreator: Boolean,
         headerTitle: String,
-        noteColor: String,
+        noteColorObj: Object,
         noteText: String,
         id: String,
         showError: Boolean,
@@ -48,6 +48,7 @@
 
 <style scoped>
   .header{
+    color: white;
     height: 8%;
     box-sizing: border-box;
     display: flex;
@@ -58,6 +59,7 @@
   }
 
   .header-title{
+    padding-left: 10px;
     font-size: 24px;
   }
 

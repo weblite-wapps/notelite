@@ -1,7 +1,7 @@
 <template>
   <div
     class="title"
-    :style="{ backgroundColor: 'light' + noteColor }"
+    :style="{ backgroundColor: noteColorObj.normal }"
   >
     {{ noteTitle }}
   </div>
@@ -13,7 +13,7 @@
 
     props: {
       noteTitle: String,
-      noteColor: String,
+      noteColorObj: Object,
     },
   }
 </script>
@@ -21,11 +21,13 @@
 <style scoped>
   .title {
     padding: 5px;
+    padding-top: 15px;
+    padding-left: 20px;
     width: 100%;
     box-sizing: border-box;
     font-size: 22px;
     display: flex;
-    justify-content:space-around;
+    /* justify-content:space-around; */
     word-break: break-all;
     font-weight: bold;
   }

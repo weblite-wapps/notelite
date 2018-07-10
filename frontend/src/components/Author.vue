@@ -1,7 +1,6 @@
 <template>
   <div
     class="author"
-    :style="{ backgroundColor: 'light' + noteColor }"
   >
     A note by {{ authorName }}
   </div>
@@ -13,15 +12,16 @@
 
       props:{
         authorName: String,
-        noteColor: String,
+        noteColorObj: Object,
       },
     }
 </script>
 
 <style scoped>
   .author{
-    direction: rtl;
-    padding: 6px;
+    background-color: #eeeeee;
+    text-align: center;
+    padding: 10px;
     padding-right: 20px;
     word-wrap: break-all;
   }
