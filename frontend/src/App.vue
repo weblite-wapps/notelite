@@ -5,19 +5,20 @@
     @keyup.ctrl.115.prevent="save"
     @keyup.ctrl.114.prevent="refresh"
   >
-
     <NoteliteHeader
       class="header"
       :id="id"
       @textChange="textChange"
       @save="save"
       @refresh="refresh"
+      @toggleShowMarkedDown="toggleShowMarkedDown"
       :showError="showError"
       :showSaved="showSaved"
       :showRefreshed="showRefreshed"
       :noteText="noteText"
       :headerTitle="noteTitle"
       :noteCreator="noteCreator"
+      :showMarkedDown="showMarkedDown"
       :color="color"
     />
 
@@ -26,7 +27,9 @@
       @refresh="refresh"
       @textChange="textChange"
       :noteText="noteText"
+      :markedDownNoteText="markedDownNoteText"
       :noteCreator="noteCreator"
+      :showMarkedDown="showMarkedDown"
     />
 
     <Author :authorName="authorName" />
@@ -38,6 +41,8 @@
   import NoteliteHeader from './components/NoteliteHeader.vue'
   import NoteText from './components/NoteText.vue'
   import Author from './components/Author.vue'
+  import showdown from 'showdown'
+  var converter = new showdown.Converter()
 
   export default {
     name: 'App',
@@ -53,13 +58,15 @@
         id: '11',
         noteCreator: true,
         authorName: 'amin',
-        noteText: '',
+        noteText: '# hello, markdown!',
+        markedDownNoteText: '',
         noteTitle: 'mytitle',
         color: '#9b0000',
         showError: false,
         showSaved: false,
         showRefreshed: false,
-        //available colors:
+        showMarkedDown: false,
+        //Supported Colors:
         // '#ffd600'
         // '#43a047'
         // '#76d275'
@@ -122,10 +129,20 @@
             // Calling the end function will send the request
           })
       },
+      toggleShowMarkedDown: function() {
+        this.showMarkedDown = !this.showMarkedDown
+      }
     },
 
     mounted: function() {
+      this.markedDownNoteText = converter.makeHtml(this.noteText);
       this.refresh()
+    },
+
+    watch: {
+      noteText: function() {
+        this.markedDownNoteText = converter.makeHtml(this.noteText);
+      },
     },
   }
 </script>
@@ -140,5 +157,6 @@
     flex-direction: column;
     border-radius: 5px;
     overflow: hidden;
+    background-color: #eeeeee;
   }
 </style>

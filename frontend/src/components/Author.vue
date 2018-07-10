@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="author"
-  >
+  <div class="author">
     A note by {{ authorName }}
   </div>
 </template>

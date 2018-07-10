@@ -1,14 +1,22 @@
 <template>
-  <textarea
-    autofocus
-    :readonly="!noteCreator"
-    @change="changed"
-    @keyup.ctrl.115.prevent="save"
-    @keyup.ctrl.114.prevent="refresh"
-    class="textarea"
-    v-model:value="editableNoteText"
-    :placeholder="placeHolder"
-  />
+  <div class="text-root">
+    <textarea
+      autofocus
+      v-if="noteCreator && !showMarkedDown"
+      @change="changed"
+      @keyup.ctrl.115.prevent="save"
+      @keyup.ctrl.114.prevent="refresh"
+      class="textarea"
+      v-model:value="editableNoteText"
+      :placeholder="placeHolder"
+    />
+
+    <div
+      class="marked-down-text"
+      v-if="!noteCreator || showMarkedDown"
+      v-html="markedDownNoteText"
+    />
+  </div>
 </template>
 
 <script>
@@ -19,6 +27,8 @@
         noteText: String,
         noteCreator: Boolean,
         noteColorObj: Object,
+        markedDownNoteText: String,
+        showMarkedDown: Boolean,
     },
 
     data() {
@@ -58,6 +68,7 @@
         }
       },
     },
+    
     watch: {
       noteText:function(){
         this.editableNoteText = this.noteText
@@ -70,13 +81,28 @@
   .textarea {
     height: 90%;
     border: 0px;
-    box-sizing: border-box;
     width: 100%;
     font-size: 20px;
     padding: 20px;
+    box-sizing: border-box;
     outline: none;
     resize: none;
     overflow: auto;
     background-color: #eeeeee;
+  }
+
+  .marked-down-text {
+    height: 90%;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    padding-bottom: 0px;
+    overflow: auto;
+    background-color: #eeeeee;
+    word-wrap: break-word;
+  }
+
+  .text-root {
+    height: 90%;
   }
 </style>
