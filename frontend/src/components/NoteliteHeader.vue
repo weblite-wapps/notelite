@@ -1,7 +1,7 @@
 <template>
   <div
     class="header"
-    :style="{ backgroundColor: noteColorObj.color }"
+    :style="{ backgroundColor: color }"
   >
 
     <span class="header-title">{{ headerTitle }}</span>
@@ -27,7 +27,7 @@
       props: {
         noteCreator: Boolean,
         headerTitle: String,
-        noteColorObj: Object,
+        color: String,
         noteText: String,
         id: String,
         showError: Boolean,

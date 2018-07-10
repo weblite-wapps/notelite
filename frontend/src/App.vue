@@ -16,12 +16,10 @@
       :showSaved="showSaved"
       :showRefreshed="showRefreshed"
       :noteText="noteText"
-      :headerTitle="headerTitle"
+      :headerTitle="noteTitle"
       :noteCreator="noteCreator"
-      :noteColorObj="noteColorObj"
+      :color="color"
     />
-
-    <!-- <NoteTitle :noteTitle="noteTitle" :noteColorObj="noteColorObj" /> -->
 
     <NoteText
       @save="save"
@@ -29,10 +27,9 @@
       @textChange="textChange"
       :noteText="noteText"
       :noteCreator="noteCreator"
-      :noteColorObj="noteColorObj"
     />
 
-    <Author :authorName="authorName" :noteColorObj="noteColorObj" />
+    <Author :authorName="authorName" />
   </div>
 </template>
 
@@ -40,7 +37,6 @@
   import request from 'superagent'
   import NoteliteHeader from './components/NoteliteHeader.vue'
   import NoteText from './components/NoteText.vue'
-  import NoteTitle from './components/NoteTitle.vue'
   import Author from './components/Author.vue'
 
   export default {
@@ -49,7 +45,6 @@
     components: {
       NoteliteHeader,
       NoteText,
-      NoteTitle,
       Author,
     },
 
@@ -58,15 +53,28 @@
         id: '11',
         noteCreator: true,
         authorName: 'amin',
-        headerTitle: 'notelite',
         noteText: '',
         noteTitle: 'mytitle',
-        noteColor: '',
-        noteColorObj: {},
+        color: '#9b0000',
         showError: false,
         showSaved: false,
         showRefreshed: false,
-        //yellow-green-lightgreen-darkgreen-blue-darkblue-black-red-darkred-orange-purple-deeppurple-pink-deeppink-grey
+        //available colors:
+        // '#ffd600'
+        // '#43a047'
+        // '#76d275'
+        // '#00701a'
+        // '#00b0ff'
+        // '#0081cb'
+        // '#424242'
+        // '#d50000'
+        // '#9b0000'
+        // '#ff6d00'
+        // '#aa00ff'
+        // '#5e35b1'
+        // '#ff4081'
+        // '#c60055'
+        // '#707070'
       }
     },
 
@@ -115,51 +123,7 @@
     },
 
     mounted: function() {
-      this.noteColor = 'grey'
-
       this.refresh()
-      //// TEMP:
-    },
-
-    watch:{
-      noteColor: function() {
-        //[name, light, normal, dark, backgroundColor]
-        if(this.noteColor === 'yellow')
-        {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#ffeb3b' }
-        }else if(this.noteColor === 'green') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#43a047' }
-        }else if(this.noteColor === 'lightgreen') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#76d275' }
-        }else if(this.noteColor === 'darkgreen') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#00701a' }
-        }else if(this.noteColor === 'blue') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#00b0ff' }
-        }else if(this.noteColor === 'darkblue') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#0081cb' }
-        }else if(this.noteColor === 'black') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#424242' }
-        }else if(this.noteColor === 'red') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#d50000' }
-        }else if(this.noteColor === 'darkred') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#9b0000' }
-        }else if(this.noteColor === 'orange') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#ff6d00' }
-        }else if(this.noteColor === 'purple') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#aa00ff' }
-        }else if(this.noteColor === 'deeppurple') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#5e35b1' }
-        }else if(this.noteColor === 'pink') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#ff4081' }
-        }else if(this.noteColor === 'deeppink') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#c60055' }
-        }else if(this.noteColor === 'grey') {
-          this.noteColorObj = { name: this.noteColor, text:'', color: '#707070' }
-        }
-
-
-        console.log(this.noteColorObj)
-      },
     },
   }
 </script>
