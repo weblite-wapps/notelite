@@ -2,7 +2,6 @@
   <div
     id="app"
     class="root"
-    :style="{borderColor: noteColor}"
     @keyup.ctrl.115.prevent="save"
     @keyup.ctrl.114.prevent="refresh"
   >
@@ -125,11 +124,10 @@
     width: 350px;
     height: 100%;
     box-sizing: border-box;
-    border: 1px solid;
     position: relative;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
   }
 </style>

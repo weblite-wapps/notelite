@@ -1,7 +1,7 @@
 <template>
   <div
     class="header"
-    :style="{ backgroundColor: 'light'+noteColor, borderColor: noteColor}"
+    :style="{ backgroundColor: 'light'+noteColor }"
   >
 
     <span class="header-title">{{ headerTitle }}</span>
@@ -49,7 +49,6 @@
 <style scoped>
   .header{
     height: 8%;
-    border: 2px solid;
     box-sizing: border-box;
     display: flex;
     align-items: center;

@@ -1,7 +1,7 @@
 <template>
   <div
     class="title"
-    :style="{ backgroundColor: 'light' + noteColor, borderColor: noteColor }"
+    :style="{ backgroundColor: 'light' + noteColor }"
   >
     {{ noteTitle }}
   </div>
@@ -22,7 +22,6 @@
   .title {
     padding: 5px;
     width: 100%;
-    border: 2px solid;
     box-sizing: border-box;
     font-size: 22px;
     display: flex;
