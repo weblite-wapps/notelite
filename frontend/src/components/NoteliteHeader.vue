@@ -16,17 +16,17 @@
       </span>
 
       <i
-        class="action-icon"
-        @click="noteCreator ? save() : refresh()"
-      >
-        {{ noteCreator ? 'launch' : 'input' }}
-      </i>
-
-      <i
         @click="toggleShowMarkedDown"
         v-if="showMarkedDownText"
       >
         {{ showMarkedDownText }}
+      </i>
+
+      <i
+        class="action-icon"
+        @click="noteCreator ? save() : refresh()"
+      >
+        {{ noteCreator ? 'launch' : 'input' }}
       </i>
     </div>
   </div>
@@ -94,6 +94,6 @@
   }
 
   .action-icon {
-    padding-right: 5px;
+    padding-left: 5px;
   }
 </style>
