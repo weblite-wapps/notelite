@@ -8,11 +8,12 @@
     </div>
 
     <div class="right-buttons">
-      <span class="save-text" v-if="showSaved">Saved</span>
-
-      <span class="refresh-text" v-if="showRefreshed">Refreshed</span>
-
-      <span class="error-text" v-if="showError">Error</span>
+      <span
+        class="notify-message"
+        :style="{ color: notifyMessage === 'Error' ? 'red' : 'green' }"
+      >
+        {{ notifyMessage }}
+      </span>
 
       <i class="save-icon" @click="save" v-if="noteCreator">
         launch
@@ -45,23 +46,16 @@
         color: String,
         noteText: String,
         id: String,
-        showError: Boolean,
-        showSaved: Boolean,
-        showRefreshed: Boolean,
+        notifyMessage: String,
         showMarkedDown: Boolean,
       },
 
     methods: {
-      refresh: function() {
-        this.$emit('refresh')
-      },
-      save: function() {
-        this.$emit('save')
-      },
-      toggleShowMarkedDown: function() {
-        console.log('clicked')
-        this.$emit('toggleShowMarkedDown')
-      },
+      refresh: function() { this.$emit('refresh') },
+
+      save: function() { this.$emit('save') },
+
+      toggleShowMarkedDown: function() { this.$emit('toggleShowMarkedDown') },
     },
   }
 </script>
@@ -83,24 +77,9 @@
     font-size: 24px;
   }
 
-  .refresh-text{
+  .notify-message{
     font-weight: bold;
     font-size: 18px;
-    padding-right: 5px;
-    color:green;
-  }
-
-  .save-text {
-    font-weight: bold;
-    font-size: 18px;
-    color: green;
-    padding-right: 5px;
-  }
-
-  .error-text {
-    font-weight: bold;
-    font-size: 20px;
-    color: red;
     padding-right: 5px;
   }
 

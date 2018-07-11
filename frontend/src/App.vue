@@ -8,13 +8,10 @@
     <NoteliteHeader
       class="header"
       :id="id"
-      @textChange="textChange"
       @save="save"
       @refresh="refresh"
       @toggleShowMarkedDown="toggleShowMarkedDown"
-      :showError="showError"
-      :showSaved="showSaved"
-      :showRefreshed="showRefreshed"
+      :notifyMessage="notifyMessage"
       :noteText="noteText"
       :headerTitle="noteTitle"
       :noteCreator="noteCreator"
@@ -59,60 +56,43 @@
         noteText: '# hello, markdown!',
         noteTitle: 'mytitle',
         color: '#ffd600',
-        showError: false,
-        showSaved: false,
-        showRefreshed: false,
+        notifyMessage: '',
         showMarkedDown: false,
       }
     },
 
     methods: {
-      textChange: function(newText){
-        this.noteText = newText
-      },
+      textChange: function(newText){ this.noteText = newText },
+
       refresh: function() {
         request
           .get('https://localhost:3090/loadNote/' + this.id)
           .set('Access-Control-Allow-Origin', '*')
           .end((err, res) => {
-            if(err || res.body == null){
-              this.showRefreshed = false
-              this.showError = true
-              this.showSaved = false
-              setTimeout(() => this.showError = false, 2000)
-            }else {
+            if(err || res.body == null) this.notifyMessage = 'Error'
+            else {
               this.textChange(res.body.text)
-              this.showRefreshed = true
-              this.showError = false
-              this.showSaved = false
-              setTimeout(() => this.showRefreshed = false, 2000)
+              this.notifyMessage = 'Refreshed'
             }
-            // Calling the end function will send the request
+            setTimeout(() => this.notifyMessage = '', 2000)
           })
       },
+
       save: function() {
         request
           .post('https://localhost:3090/saveNote')
           .set('Access-Control-Allow-Origin', '*')
-          .send({ id: this.id, text: this.noteText }) // sends a JSON post body
+          .send({ id: this.id, text: this.noteText })
           .end((err, res) => {
-            if(err) {
-              this.showRefreshed = false
-              this.showError = true
-              this.showSaved = false
-              setTimeout(() => this.showError = false, 2000)
-            }else {
-              this.showRefreshed = false
-              this.showError = false
-              this.showSaved = true
-              setTimeout(() => this.showSaved = false, 2000)
-            }
-            // Calling the end function will send the request
+            if(err) this.notifyMessage = 'Error'
+            else this.notifyMessage = 'Saved'
+            setTimeout(() => this.notifyMessage = '', 2000)
           })
       },
+
       toggleShowMarkedDown: function() {
         this.showMarkedDown = !this.showMarkedDown
-      }
+      },
     },
 
     mounted: function() { this.refresh() },
