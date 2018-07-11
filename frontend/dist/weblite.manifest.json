@@ -9,6 +9,36 @@
   "shareDB": false,
   "width": 352,
   "height": 452,
+  "customizeArray": [
+    {
+      "type": "color",
+      "name": "headerColor",
+      "title": "header color",
+      "detail": {
+        "colors": [
+          "#ffd600",
+          "#43a047",
+          "#76d275",
+          "#00701a",
+          "#00b0ff",
+          "#0081cb",
+          "#424242",
+          "#d50000",
+          "#9b0000",
+          "#ff6d00",
+          "#aa00ff",
+          "#5e35b1",
+          "#ff4081",
+          "#c60055",
+          "#707070"
+        ]
+      }
+    },
+    { "type": "textField",
+      "name": "titleText",
+      "title": "title text"
+    }
+  ],
   "servIndexes": {
     "inline": "index",
     "customize": "index",
