@@ -15,20 +15,18 @@
         {{ notifyMessage }}
       </span>
 
-      <i class="save-icon" @click="save" v-if="noteCreator">
-        launch
+      <i
+        class="action-icon"
+        @click="noteCreator ? save() : refresh()"
+      >
+        {{ noteCreator ? 'launch' : 'input' }}
       </i>
 
-      <i class="refresh-icon" @click="refresh" v-if="!noteCreator">
-        input
-      </i>
-
-      <i class="preview-icon" @click="toggleShowMarkedDown" v-if="noteCreator && !showMarkedDown">
-        visibility
-      </i>
-
-      <i class="edit-icon" @click="toggleShowMarkedDown" v-if="noteCreator && showMarkedDown">
-        edit
+      <i
+        @click="toggleShowMarkedDown"
+        v-if="showMarkedDownText"
+      >
+        {{ showMarkedDownText }}
       </i>
     </div>
   </div>
@@ -38,17 +36,15 @@
   import request from 'superagent'
 
   export default {
-      name: 'NoteliteHeader',
+    name: 'NoteliteHeader',
 
-      props: {
-        noteCreator: Boolean,
-        headerTitle: String,
-        color: String,
-        noteText: String,
-        id: String,
-        notifyMessage: String,
-        showMarkedDown: Boolean,
-      },
+    props: {
+      noteCreator: Boolean,
+      headerTitle: String,
+      color: String,
+      notifyMessage: String,
+      showMarkedDown: Boolean,
+    },
 
     methods: {
       refresh: function() { this.$emit('refresh') },
@@ -57,6 +53,14 @@
 
       toggleShowMarkedDown: function() { this.$emit('toggleShowMarkedDown') },
     },
+
+    computed: {
+      showMarkedDownText: function() {
+        if (!this.noteCreator) return ''
+        else if (this.noteCreator && !this.showMarkedDown) return 'visibility'
+        else if (this.noteCreator && this.showMarkedDown) return 'edit'
+      }
+    }
   }
 </script>
 
@@ -89,11 +93,7 @@
     justify-content: space-between;
   }
 
-  .save-icon {
-    padding-right: 5px;
-  }
-
-  .refresh-icon {
+  .action-icon {
     padding-right: 5px;
   }
 </style>

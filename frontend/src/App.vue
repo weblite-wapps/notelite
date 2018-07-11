@@ -7,12 +7,10 @@
   >
     <NoteliteHeader
       class="header"
-      :id="id"
       @save="save"
       @refresh="refresh"
       @toggleShowMarkedDown="toggleShowMarkedDown"
       :notifyMessage="notifyMessage"
-      :noteText="noteText"
       :headerTitle="noteTitle"
       :noteCreator="noteCreator"
       :showMarkedDown="showMarkedDown"
@@ -51,7 +49,7 @@
     data() {
       return {
         id: '11',
-        noteCreator: false,
+        noteCreator: true,
         authorName: 'amin',
         noteText: '# hello, markdown!',
         noteTitle: 'mytitle',

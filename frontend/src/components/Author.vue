@@ -10,13 +10,12 @@
 
       props:{
         authorName: String,
-        noteColorObj: Object,
       },
     }
 </script>
 
 <style scoped>
-  .author{
+  .author {
     background-color: #eeeeee;
     text-align: center;
     padding: 10px;
