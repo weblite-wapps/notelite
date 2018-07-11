@@ -59,13 +59,15 @@
 </script>
 
 <style scoped>
-  .textarea {
-    height: 90%;
-    border: 0px;
-    width: 100%;
-    font-size: 20px;
+  .text-root {
+    height: 100%;
     padding: 20px;
-    box-sizing: border-box;
+  }
+
+  .textarea {
+    width: 100%;
+    border: 0;
+    font-size: 20px;
     outline: none;
     resize: none;
     overflow: auto;
@@ -73,17 +75,11 @@
   }
 
   .marked-down-text {
-    height: 90%;
     width: 100%;
-    padding: 15px;
     box-sizing: border-box;
     padding-bottom: 0px;
     overflow: auto;
     background-color: #eeeeee;
     word-wrap: break-word;
-  }
-
-  .text-root {
-    height: 90%;
   }
 </style>

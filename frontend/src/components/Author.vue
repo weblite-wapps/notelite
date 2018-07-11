@@ -16,10 +16,10 @@
 
 <style scoped>
   .author {
+    height: 20px;
     background-color: #eeeeee;
     text-align: center;
     padding: 10px;
-    padding-right: 20px;
     word-wrap: break-all;
   }
 </style>

@@ -102,11 +102,11 @@
     width: 350px;
     height: 100%;
     box-sizing: border-box;
-    position: relative;
-    display: flex;
-    flex-direction: column;
     border-radius: 5px;
     overflow: hidden;
     background-color: #eeeeee;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 </style>
