@@ -69,7 +69,7 @@
 <style scoped>
   .header{
     color: white;
-    height: 8%;
+    height: 50px;
     width: 100%;
     box-sizing: border-box;
     display: flex;
