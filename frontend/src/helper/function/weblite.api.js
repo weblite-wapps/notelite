@@ -10,5 +10,6 @@ export default (vueRoot) => {
     vueRoot.noteCreator = creator
   })
 
+  console.log(W)
   W.start()
 }
