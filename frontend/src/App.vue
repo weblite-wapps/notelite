@@ -81,7 +81,7 @@
           .post('https://localhost:3090/saveNote')
           .set('Access-Control-Allow-Origin', '*')
           .send({ id: this.id, text: this.noteText })
-          .end((err, res) => {
+          .end((err) => {
             if(err) this.notifyMessage = 'Error'
             else this.notifyMessage = 'Saved'
             setTimeout(() => this.notifyMessage = '', 2000)

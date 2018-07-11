@@ -5,7 +5,7 @@
       v-if="noteCreator && !showMarkedDown"
       @change="changed"
       class="textarea"
-      v-model:value="editableNoteText"
+      v-model="editableNoteText"
       :placeholder="placeHolder"
     />
 

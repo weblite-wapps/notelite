@@ -33,8 +33,6 @@
 </template>
 
 <script>
-  import request from 'superagent'
-
   export default {
     name: 'NoteliteHeader',
 
