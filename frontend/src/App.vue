@@ -37,8 +37,11 @@
   import Author from './components/Author.vue'
   // helper
   import webliteHandler from './helper/function/weblite.api'
+  //
+  import config from './config'
   // W
   const { W } = window
+
 
   export default {
     name: 'App',
@@ -52,7 +55,7 @@
     data() {
       return {
         id: (W && W.wisId) || '1',
-        noteCreator: false,
+        noteCreator: true,
         authorName: 'amin',
         noteText: '',
         noteTitle: 'notelite',
@@ -67,7 +70,7 @@
 
       refresh: function() {
         request
-          .get('https://localhost:3090/loadNote/' + this.id)
+          .get(`${config.sevrer}/loadNote/${this.id}`)
           .set('Access-Control-Allow-Origin', '*')
           .end((err, res) => {
             if(err || res.body == null) this.notifyMessage = 'Error'
@@ -81,7 +84,7 @@
 
       save: function() {
         request
-          .post('https://localhost:3090/saveNote')
+          .post(`${config.sevrer}/saveNote`)
           .set('Access-Control-Allow-Origin', '*')
           .send({ id: this.id, text: this.noteText })
           .end((err) => {
