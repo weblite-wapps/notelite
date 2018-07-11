@@ -10,7 +10,7 @@
     <div class="right-buttons">
       <span
         class="notify-message"
-        :style="{ color: notifyMessage === 'Error' ? 'red' : 'green' }"
+        :style="{ color: notifyMessage === 'Error' ? '#C51162' : '#018786' }"
       >
         {{ notifyMessage }}
       </span>
@@ -83,6 +83,7 @@
     font-weight: bold;
     font-size: 18px;
     padding-right: 5px;
+    font-family: Helvetica;
   }
 
   .right-buttons {
