@@ -54,31 +54,15 @@
     data() {
       return {
         id: '11',
-        noteCreator: true,
+        noteCreator: false,
         authorName: 'amin',
         noteText: '# hello, markdown!',
         noteTitle: 'mytitle',
-        color: '#9b0000',
+        color: '#ffd600',
         showError: false,
         showSaved: false,
         showRefreshed: false,
         showMarkedDown: false,
-        //Supported Colors:
-        // '#ffd600'
-        // '#43a047'
-        // '#76d275'
-        // '#00701a'
-        // '#00b0ff'
-        // '#0081cb'
-        // '#424242'
-        // '#d50000'
-        // '#9b0000'
-        // '#ff6d00'
-        // '#aa00ff'
-        // '#5e35b1'
-        // '#ff4081'
-        // '#c60055'
-        // '#707070'
       }
     },
 

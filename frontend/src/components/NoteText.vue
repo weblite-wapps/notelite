@@ -4,8 +4,6 @@
       autofocus
       v-if="noteCreator && !showMarkedDown"
       @change="changed"
-      @keyup.ctrl.115.prevent="save"
-      @keyup.ctrl.114.prevent="refresh"
       class="textarea"
       v-model:value="editableNoteText"
       :placeholder="placeHolder"
@@ -21,7 +19,7 @@
 
 <script>
   import showdown from 'showdown'
-  var converter = new showdown.Converter()
+  const converter = new showdown.Converter()
 
 
   export default {
@@ -34,41 +32,17 @@
         showMarkedDown: Boolean,
     },
 
-    data() {
-      return {
-        editableNoteText: this.noteText
-      }
-    },
+    data() { return { editableNoteText: this.noteText } },
 
     methods: {
       changed: function() {
         this.$emit('textChange', this.editableNoteText)
       },
-      refresh: function() {
-        if(!this.noteCreator) {
-          this.$emit('refresh')
-          this.showRefreshed = true
-          setTimeout(() => this.showRefreshed = false, 2000)
-        }
-      },
-      save: function() {
-        if(this.noteCreator)
-        {
-          this.$emit('save')
-          this.showSaved = true
-          setTimeout(() => this.showSaved = false, 2000)
-        }
-      },
     },
 
     computed: {
       placeHolder: function() {
-        if(this.noteCreator)
-        {
-          return "What's on your mind?"
-        }else {
-          return "This note is empty."
-        }
+        return this.noteCreator ? "What's on your mind?" : "This note is empty."
       },
 
       markedDownNoteText: function() {
