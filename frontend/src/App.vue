@@ -35,7 +35,10 @@
   import NoteliteHeader from './components/NoteliteHeader.vue'
   import NoteText from './components/NoteText.vue'
   import Author from './components/Author.vue'
-
+  // helper
+  import webliteHandler from './helper/function/weblite.api'
+  // W
+  const { W } = window
 
   export default {
     name: 'App',
@@ -48,11 +51,11 @@
 
     data() {
       return {
-        id: '11',
-        noteCreator: true,
+        id: (W && W.wisId) || '1',
+        noteCreator: false,
         authorName: 'amin',
-        noteText: '# hello, markdown!',
-        noteTitle: 'mytitle',
+        noteText: '',
+        noteTitle: 'notelite',
         color: '#ffd600',
         notifyMessage: '',
         showMarkedDown: false,
@@ -92,6 +95,8 @@
         this.showMarkedDown = !this.showMarkedDown
       },
     },
+
+    created: function() { W && webliteHandler(this) },
 
     mounted: function() { this.refresh() },
   }
