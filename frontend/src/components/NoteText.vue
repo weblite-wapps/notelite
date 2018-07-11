@@ -20,6 +20,10 @@
 </template>
 
 <script>
+  import showdown from 'showdown'
+  var converter = new showdown.Converter()
+
+
   export default {
     name: 'NoteText',
 
@@ -27,7 +31,6 @@
         noteText: String,
         noteCreator: Boolean,
         noteColorObj: Object,
-        markedDownNoteText: String,
         showMarkedDown: Boolean,
     },
 
@@ -67,8 +70,12 @@
           return "This note is empty."
         }
       },
+
+      markedDownNoteText: function() {
+        return converter.makeHtml(this.noteText)
+      },
     },
-    
+
     watch: {
       noteText:function(){
         this.editableNoteText = this.noteText

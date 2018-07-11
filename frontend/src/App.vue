@@ -27,7 +27,6 @@
       @refresh="refresh"
       @textChange="textChange"
       :noteText="noteText"
-      :markedDownNoteText="markedDownNoteText"
       :noteCreator="noteCreator"
       :showMarkedDown="showMarkedDown"
     />
@@ -41,8 +40,7 @@
   import NoteliteHeader from './components/NoteliteHeader.vue'
   import NoteText from './components/NoteText.vue'
   import Author from './components/Author.vue'
-  import showdown from 'showdown'
-  var converter = new showdown.Converter()
+
 
   export default {
     name: 'App',
@@ -59,7 +57,6 @@
         noteCreator: true,
         authorName: 'amin',
         noteText: '# hello, markdown!',
-        markedDownNoteText: '',
         noteTitle: 'mytitle',
         color: '#9b0000',
         showError: false,
@@ -134,16 +131,7 @@
       }
     },
 
-    mounted: function() {
-      this.markedDownNoteText = converter.makeHtml(this.noteText);
-      this.refresh()
-    },
-
-    watch: {
-      noteText: function() {
-        this.markedDownNoteText = converter.makeHtml(this.noteText);
-      },
-    },
+    mounted: function() { this.refresh() },
   }
 </script>
 
