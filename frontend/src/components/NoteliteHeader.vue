@@ -65,7 +65,7 @@
 <style scoped>
   .header{
     color: white;
-    min-height: 50px;
+    height: 50px;
     width: 100%;
     box-sizing: border-box;
     display: flex;

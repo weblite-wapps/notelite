@@ -60,12 +60,13 @@
 
 <style scoped>
   .text-root {
-    height: 100%;
+    height: calc(100% - 130px);
     padding: 20px;
   }
 
   .textarea {
     width: 100%;
+    height: 100%;
     border: 0;
     font-size: 20px;
     outline: none;
