@@ -1,0 +1,33 @@
+{
+  "name": "notelite-backend",
+  "scripts": {
+    "build": "../../../tools/buildlite/src/index.js default build",
+    "dev": "../../../tools/buildlite/src/index.js default dev"
+  },
+  "buildlite": {
+    "default": {
+      "context": "src",
+      "outputPath": "dist",
+      "outputName": "server.js",
+      "babel": true,
+      "target": "node",
+      "externals": [
+        "nodeModules"
+      ]
+    },
+    "dev": {
+      "watch": true,
+      "entry": "./setup/index.js"
+    },
+    "build": {
+      "entry": "./setup/index.js"
+    }
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongodb": "^2.2.33",
+    "mongoose": "^5.1.7"
+  }
+}
