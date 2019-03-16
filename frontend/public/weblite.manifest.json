@@ -1,7 +1,7 @@
 {
   "name": "notelite",
   "id": "5b46178f8a85047466d91ea3",
-  "instancable": true,
+  "instantiable": true,
   "creator": true,
   "userInfo": true,
   "fullscreen": false,
