@@ -1,9 +1,10 @@
 {
   "name": "notelite",
-  "id": "5b46178f8a85047466d91ea3",
-  "instancable": true,
+  "id": "5caf6809449c4a25b708c488",
+  "instantiable": true,
   "creator": true,
   "userInfo": true,
+  "searchable": true,
   "fullscreen": false,
   "inline": true,
   "shareDB": false,
@@ -34,7 +35,8 @@
         ]
       }
     },
-    { "type": "textField",
+    {
+      "type": "textField",
       "name": "titleText",
       "title": "title text"
     }
@@ -43,5 +45,6 @@
     "inline": "index",
     "customize": "index",
     "main": "index"
-  }
+  },
+  "version": "0.0.1"
 }
