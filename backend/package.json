@@ -1,8 +1,8 @@
 {
   "name": "notelite-backend",
   "scripts": {
-    "build": " buildlite default build",
-    "dev": " buildlite default dev"
+    "build": "buildlite default build",
+    "dev": "buildlite default dev"
   },
   "buildlite": {
     "default": {
